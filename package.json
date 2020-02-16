@@ -1,19 +1,20 @@
 {
-  "name": "adonis-api-app",
+  "name": "server",
   "version": "4.1.0",
   "adonis-version": "4.1.0",
-  "description": "Adonisjs boilerplate for API server with pre-configured JWT",
-  "main": "index.js",
+  "description": "TechConnector social network server API",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "node ace test"
   },
   "keywords": [
-    "adonisjs",
-    "adonis-app"
+    "TechConnector",
+    "Social Network",
+    "API"
   ],
-  "author": "",
-  "license": "UNLICENSED",
+  "author": "Jonatan Flores <jonatafloress@gmail.com>",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@adonisjs/ace": "^5.0.8",
