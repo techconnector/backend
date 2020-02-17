@@ -5,6 +5,7 @@
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const User = use("App/Models/User");
+const gravatar = require("gravatar");
 
 class RegisterController {
   /**
@@ -28,7 +29,8 @@ class RegisterController {
    */
   async store({ request, response }) {
     const data = request.only(["name", "email", "password"]);
-    const user = await User.create(data);
+    const avatar = gravatar.url(data.email, { s: "200", r: "pg", d: "mm" });
+    const user = await User.create({ ...data, avatar });
     return response.status(201).json(user);
   }
 }
