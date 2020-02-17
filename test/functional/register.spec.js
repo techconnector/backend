@@ -21,14 +21,17 @@ test("it should be able to register a user", async ({ assert, client }) => {
     })
     .end();
 
-  const { name, email } = response.body;
-  const user = await User.first();
+  const { token, refreshToken, user } = response.body;
+  const { name, email } = user;
+  const newUser = await User.first();
 
   response.assertStatus(201);
   assert.equal(name, "John Doe");
   assert.equal(email, "johndoe@techconnector.com");
-  assert.equal(user.name, name);
-  assert.equal(user.email, email);
+  assert.isDefined(token);
+  assert.isDefined(refreshToken);
+  assert.equal(newUser.name, name);
+  assert.equal(newUser.email, email);
 });
 
 test("it should not be able to register a user without name", async ({
