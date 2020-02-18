@@ -1,0 +1,55 @@
+paths:
+  /login:
+    post:
+      tags:
+        - Authentication & Registration
+      description: Route to authenticate an give back a JWT token when sucessfully log in
+      produces:
+        - application/json
+      parameters:
+        - name: email
+          description: the user's email address.
+          in: formData
+          required: true
+          type: string
+        - name: password
+          description: the user's password.
+          in: formData
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+
+  /register:
+    post:
+      tags:
+        - Authentication & Registration
+      description: Route to register a new user
+      produces:
+        - application/json
+      parameters:
+        - name: name
+          description: the user's display name.
+          in: formData
+          required: true
+          type: string
+        - name: email
+          description: the user's email address.
+          in: formData
+          required: true
+          type: string
+        - name: password
+          description: the user's password.
+          in: formData
+          required: true
+          type: string
+      responses:
+        201:
+          description: CREATED
+        400:
+          description: Bad Request

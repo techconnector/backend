@@ -10,22 +10,7 @@ const gravatar = require("gravatar");
 
 class RegisterController {
   /**
-   * @api {post} /register register a new user
-   * @apiVersion 1.0.0
-   * @apiGroup Authentication
-   * @apiName register
-   * @apiDescription saves a new user into the database
-   * @apiParam {String} name the user's name to be displayed
-   * @apiParam {String} email the user's email address
-   * @apiParam {String} password the user's password
-   * @apiSuccess (201 Created) {String} token The JWT (Json Web Token) authentication
-   * @apiSuccess (201 Created) {String} refreshToken token to re-authenticate user when JWT token expires
-   * @apiSuccess (201 Created) {Object} user The new created user
-   * @apiSuccess (201 Created) {Integer} user.id id of the user
-   * @apiSuccess (201 Created) {String} user.email email address of the user
-   * @apiSuccess (201 Created) {String} user.avatar user's gravatar
-   * @apiSuccess (201 Created) {Timestamp} user.created_at date when the user was created
-   * @apiSuccess (201 Created) {Timestamp} user.upated_at last time the user was updated
+   * Register a new user
    *
    * @param {object} ctx
    * @param {Request} ctx.request
