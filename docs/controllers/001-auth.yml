@@ -3,7 +3,8 @@ paths:
     post:
       tags:
         - Authentication & Registration
-      description: Route to authenticate an give back a JWT token when sucessfully log in
+      summary: authenticate into the API
+      description: Route to authenticate an user and give back a JWT token when sucessfully log in
       produces:
         - application/json
       parameters:
@@ -29,7 +30,8 @@ paths:
     post:
       tags:
         - Authentication & Registration
-      description: Route to register a new user
+      summary: Register a new user
+      description: Route to register a new user into the system
       produces:
         - application/json
       parameters:

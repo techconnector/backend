@@ -1,0 +1,35 @@
+paths:
+  /profiles/education:
+    post:
+      security:
+        - ApiKey: []
+      tags:
+        - Profile's Education
+      summary: Add or update user's education
+      description: Creates or update the current logged in user's profile education
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        401:
+          description: Unauthorized
+        404:
+          description: Not Found
+  /profiles/education/:
+    delete:
+      security:
+        - ApiKey: []
+      tags:
+        - Profile's Education
+      summary: Remove user's education from profile
+      description: Deletes the current logged in user's profile education
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        401:
+          description: Unauthorized
+        404:
+          description: Not Found

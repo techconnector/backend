@@ -1,0 +1,110 @@
+paths:
+  /profiles/me:
+    get:
+      security:
+        - ApiKey: []
+      tags:
+        - Profile
+      summary: Show the logged in user and his/her profile
+      description: Get the current logged in user's profile
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        401:
+          description: Unauthorized
+        404:
+          description: Not Found
+  /profiles/{id}:
+    get:
+      tags:
+        - Profile
+      summary: Get profile by id
+      description: Get the profile by its profile's id field
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        404:
+          description: Not Found
+  /profiles:
+    post:
+      security:
+        - ApiKey: []
+      tags:
+        - Profile
+      summary: Create or upate a user's profile
+      description: Create a profile, for the logged in user, in case it doesn't exists, or update the current logged in user's profile
+      parameters:
+        - name: company
+          description: the company name the user current works for.
+          in: formData
+          type: string
+        - name: location
+          description: where the company's location is.
+          in: formData
+          type: string
+        - name: status
+          description: it's the current or the last job title position the user had.
+          in: formData
+          type: string
+        - name: bio
+          description: a brief description of where the user is in his/her carrer and life in general.
+          in: formData
+          type: string
+        - name: github_username
+          description: github username in case the user wants to display his/her last 3 repos information.
+          in: formData
+          type: string
+        - name: website
+          description: the user's website or the website of the company the user works for
+          in: formData
+          type: string
+        - name: youtube
+          description: the link url for the user's youtube channel
+          in: formData
+          type: string
+        - name: twitter
+          description: the link url for the user's twitter account
+          in: formData
+          type: string
+        - name: facebook
+          description: the link url for the user's facebook account
+          in: formData
+          type: string
+        - name: linkedin
+          description: the link url for the user's linkedin account
+          in: formData
+          type: string
+        - name: instagram
+          description: the link url for the user's instagram account
+          in: formData
+          type: string
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        401:
+          description: Unauthorized
+        404:
+          description: Not Found
+  /profiles/:
+    delete:
+      security:
+        - ApiKey: []
+      tags:
+        - Profile
+      summary: Deletes the user and user's profile
+      description: Remove the current logged in user's profile and user itself from the system
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+        401:
+          description: Unauthorized
+        404:
+          description: Not Found

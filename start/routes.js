@@ -4,6 +4,21 @@
 const Route = use("Route");
 
 Route.group(() => {
+  // Authentication & Registration
   Route.post("/register", "RegisterController.store").validator(["Register"]);
   Route.post("/login", "LoginController.store").validator(["Login"]);
+
+  // Profile
+  Route.get("/profiles/me", "ProfileController.me");
+  Route.get("/profiles/:id", "ProfileController.show");
+  Route.post("/profiles", "ProfileController.store");
+  Route.delete("/profiles", "ProfileController.destroy");
+
+  // Profile's Education
+  Route.post("/profiles/education", "EducationController.store");
+  Route.delete("/profiles/education", "EducationController.destroy");
+
+  // Profile's Experience
+  Route.post("/profiles/experience", "ExperienceController.store");
+  Route.delete("/profiles/experience", "ExperienceController.destroy");
 }).prefix("api/v1");
