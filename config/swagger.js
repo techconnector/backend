@@ -16,7 +16,14 @@ module.exports = {
     swaggerDefinition: {
       info: {
         title: "TechConnector Backend API",
-        version: "1.0.0"
+        version: "1.0.0",
+        description:
+          "Restful API to access the Backend of the TechConnector Social Network",
+        contact: "jonatafloress@gmail.com",
+        license: {
+          name: "MIT LICENSE",
+          url: "https://github.com/techconnector/server/LICENSE"
+        }
       },
 
       basePath: "/api/v1",
@@ -24,37 +31,17 @@ module.exports = {
       // Example security definitions.
       securityDefinitions: {
         ApiKey: {
-          description: "ApiKey description",
-          name: "Authorization"
+          description: "JWT Token to access private resources",
+          name: "Authorization",
+          type: "apiKey",
+          in: "header",
+          scheme: "bearer",
+          bearerFormat: "JWT"
         }
-
-        // // OAuth2 configuration
-        // OAuth2: {
-        //   authorizationUrl: "https://example.com/oauth/authorize",
-        //   tokenUrl: "https://example.com/oauth/token",
-
-        //   // define your scopes here
-        //   // remove read, write and admin if not necessary
-        //   scopes: {
-        //     read: "Grants read access (this is just sample)",
-        //     write: "Grants write access (this is just sample)",
-        //     admin:
-        //       "Grants read and write access to administrative information (this is just sample)"
-        //   }
-        // }
       }
     },
 
     // Path to the API docs
-    // Sample usage
-    // apis: [
-    //    'docs/**/*.yml',    // load recursive all .yml file in docs directory
-    //    'docs/**/*.js',     // load recursive all .js file in docs directory
-    // ]
-    // apis: [
-    //   'app/**/*.js',
-    //   'start/routes.js'
-    // ]
     apis: ["docs/**/*.yml"]
   }
 };
