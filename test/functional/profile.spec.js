@@ -106,12 +106,39 @@ test("it should be able to get a single profile by its ID", async ({
   const response = await client
     .get(`/api/v1/profiles/${user2.id}`)
     .header("accept", "application/json")
-    .loginVia(user1)
     .end();
 
   response.assertStatus(200);
   assert.equal(response.body.id, profile2.id);
   assert.equal(response.body.user.id, user2.id);
+});
+
+test("it should be able to get a list of profiles's with pagination", async ({
+  assert,
+  client
+}) => {
+  const user1 = await Factory.model("App/Models/User").create();
+  const user2 = await Factory.model("App/Models/User").create();
+  const user3 = await Factory.model("App/Models/User").create();
+
+  await Factory.model("App/Models/Profile").create({
+    user_id: user1.id
+  });
+  await Factory.model("App/Models/Profile").create({
+    user_id: user2.id
+  });
+  await Factory.model("App/Models/Profile").create({
+    user_id: user3.id
+  });
+
+  const response = await client
+    .get("/api/v1/profiles")
+    .header("accept", "application/json")
+    .end();
+  const { data } = response.body;
+
+  response.assertStatus(200);
+  assert.equal(data.length, 3);
 });
 
 test("it should be able to delete current logged in user's profile and user itself", async ({

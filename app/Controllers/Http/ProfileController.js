@@ -20,7 +20,14 @@ class ProfileController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async index({ request, response }) {}
+  async index({ request, response }) {
+    const page = request.input("page") || 1;
+    const profiles = await Profile.query()
+      .with("user")
+      .paginate(page);
+
+    return profiles;
+  }
 
   /**
    * Create a new user's profile or update an existing one.
