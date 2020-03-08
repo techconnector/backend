@@ -3,11 +3,15 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use("Route");
 
+// Public Routes
 Route.group(() => {
   // Authentication & Registration
   Route.post("/register", "RegisterController.store").validator(["Register"]);
   Route.post("/login", "LoginController.store").validator(["Login"]);
+}).prefix("api/v1");
 
+// Private Routes
+Route.group(() => {
   // Profile
   Route.get("/profiles/me", "ProfileController.me");
   Route.get("/profiles/:id", "ProfileController.show");
@@ -21,4 +25,6 @@ Route.group(() => {
   // Profile's Experience
   Route.post("/profiles/experience", "ExperienceController.store");
   Route.delete("/profiles/experience", "ExperienceController.destroy");
-}).prefix("api/v1");
+})
+  .middleware("auth")
+  .prefix("api/v1");
