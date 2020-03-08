@@ -8,8 +8,8 @@ class Profile extends Model {
     return this.belongsTo("App/Models/User");
   }
 
-  experience() {
-    return this.hasOne("App/Models/Experience");
+  experiences() {
+    return this.hasMany("App/Models/Experience");
   }
 }
 
