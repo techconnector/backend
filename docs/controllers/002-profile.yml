@@ -40,7 +40,6 @@ paths:
       responses:
         200:
           description: OK
-  /profiles:
     post:
       security:
         - ApiKey: []
@@ -102,7 +101,6 @@ paths:
           description: Unauthorized
         404:
           description: Not Found
-  /profiles/:
     delete:
       security:
         - ApiKey: []

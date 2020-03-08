@@ -16,7 +16,6 @@ paths:
           description: Unauthorized
         404:
           description: Not Found
-  /profiles/experience/:
     delete:
       security:
         - ApiKey: []
