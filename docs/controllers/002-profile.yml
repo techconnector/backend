@@ -30,6 +30,17 @@ paths:
         404:
           description: Not Found
   /profiles:
+    get:
+      tags:
+        - Profile
+      summary: List all profiles
+      description: Get all profiles from the database with pagination
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+  /profiles:
     post:
       security:
         - ApiKey: []

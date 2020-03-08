@@ -78,8 +78,14 @@ class ProfileController {
    */
   async show({ params }) {
     const { id } = params;
-    const profile = await Profile.findOrFail(id);
+    const profile = await Profile.find(id);
+
+    if (!profile) {
+      throw new ResourceNotFound();
+    }
+
     await profile.load("user");
+
     return profile;
   }
 
