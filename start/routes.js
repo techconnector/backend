@@ -8,13 +8,16 @@ Route.group(() => {
   // Authentication & Registration
   Route.post("/register", "RegisterController.store").validator(["Register"]);
   Route.post("/login", "LoginController.store").validator(["Login"]);
+
+  // Profile
+  Route.get("/profiles", "ProfileController.index");
+  Route.get("/profiles/:id([0-9]+)", "ProfileController.show");
 }).prefix("api/v1");
 
 // Private Routes
 Route.group(() => {
   // Profile
   Route.get("/profiles/me", "ProfileController.me");
-  Route.get("/profiles/:id", "ProfileController.show");
   Route.post("/profiles", "ProfileController.store");
   Route.delete("/profiles", "ProfileController.destroy");
 
