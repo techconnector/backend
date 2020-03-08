@@ -25,6 +25,7 @@ class ProfileController {
     const profiles = await Profile.query()
       .with("user")
       .with("experiences")
+      .with("educations")
       .paginate(page);
 
     return profiles;
@@ -87,6 +88,7 @@ class ProfileController {
 
     await profile.load("user");
     await profile.load("experiences");
+    await profile.load("educations");
 
     return profile;
   }
@@ -107,6 +109,7 @@ class ProfileController {
 
     await profile.load("user");
     await profile.load("experiences");
+    await profile.load("educations");
 
     return profile;
   }

@@ -11,6 +11,10 @@ class Profile extends Model {
   experiences() {
     return this.hasMany("App/Models/Experience");
   }
+
+  educations() {
+    return this.hasMany("App/Models/Education");
+  }
 }
 
 module.exports = Profile;
