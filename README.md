@@ -10,7 +10,7 @@ Creates your project's root folder and then via the _CMD_ or _Terminal_ access t
 $ git clone https://github.com/techconnector/backend.git
 ```
 
-After downloading the source code for the server; go inside the **server folder** via the _CMD_ or _Terminal_ and run the following command, to install all the project's dependencies:
+After downloading the source code for the server; go inside the **backend folder** via the _CMD_ or _Terminal_ and run the following command, to install all the project's dependencies:
 
 ```bash
 $ npm install
@@ -24,7 +24,7 @@ $ npm i -g @adonisjs/cli
 
 ## Documentation
 
-The **Server API endpoints** documentation are provided inside the project itself, so to access the documentation you need first to execute the Installation process as previously described and then access the **server folder** via the _CMD_ or _Terminal_ and run:
+The **Server API endpoints** documentation are provided inside the project itself, so to access the documentation you need first to execute the Installation process as previously described and then access the **backend folder** via the _CMD_ or _Terminal_ and run:
 
 ```bash
 $ adonis serve --dev
