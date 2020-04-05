@@ -4,10 +4,10 @@ This is the backend server for a simple Social Network project for the Tech Comm
 
 ## Installation
 
-Creates your project's root folder and then via the _CMD_ or _Terminal_ access the newly created folder and run the command to clone the server from the [github repository](https://github.com/techconnector/server):
+Creates your project's root folder and then via the _CMD_ or _Terminal_ access the newly created folder and run the command to clone the server from the [github repository](https://github.com/techconnector/backend):
 
 ```bash
-$ git clone https://github.com/techconnector/server.git
+$ git clone https://github.com/techconnector/backend.git
 ```
 
 After downloading the source code for the server; go inside the **server folder** via the _CMD_ or _Terminal_ and run the following command, to install all the project's dependencies:
@@ -34,7 +34,7 @@ After running the previous command you can access the following URL http://local
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/techconnector/server/blob/master/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/techconnector/backend/blob/master/CONTRIBUTING.md) for details.
 
 ## Support
 
@@ -43,8 +43,8 @@ Please see [CONTRIBUTING](https://github.com/techconnector/server/blob/master/CO
 ## Credits
 
 - [Jonatan Flores](https://github.com/JonatanFlores) (Developer)
-- [All Contributors](https://github.com/techconnector/server/contributors) (This Rock)
+- [All Contributors](https://github.com/techconnector/backend/contributors) (This Rock)
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/techconnector/server/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/techconnector/backend/blob/master/LICENSE) for more information.
