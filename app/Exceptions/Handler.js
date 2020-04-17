@@ -21,17 +21,21 @@ class ExceptionHandler extends BaseExceptionHandler {
    * @return {void}
    */
   async handle(error, { request, response }) {
+    const errors = {};
+
     // Change the errors response
-    if (error.name === "ValidationException") {
-      const errors = {};
-
-      error.messages.forEach((error) => {
-        if (!errors[error.field]) {
-          errors[error.field] = error.message;
-        }
-      });
-
-      return response.status(error.status).send(errors);
+    switch (error.name) {
+      case "ValidationException":
+        error.messages.forEach((error) => {
+          if (!errors[error.field]) {
+            errors[error.field] = error.message;
+          }
+        });
+        return response.status(error.status).send(errors);
+      case "UserNotFoundException":
+      case "PasswordMisMatchException":
+        errors["global"] = "Invalid credentials";
+        return response.status(error.status).send(errors);
     }
 
     return super.handle(...arguments);
