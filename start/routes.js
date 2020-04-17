@@ -8,6 +8,7 @@ Route.group(() => {
   // Authentication & Registration
   Route.post("/register", "RegisterController.store").validator(["Register"]);
   Route.post("/login", "LoginController.store").validator(["Login"]);
+  Route.get("/auth", "AuthController.show");
 
   // Profile
   Route.get("/profiles", "ProfileController.index");

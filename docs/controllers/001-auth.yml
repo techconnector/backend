@@ -1,4 +1,15 @@
 paths:
+  /:
+    get:
+      security:
+        - ApiKey: []
+      tags:
+        - Authentication & Registration
+      summary: Get logged in user's information
+      description: Route to obtain the logged in user's information through the provided Json Web Token (JWT)
+      produces:
+        - application/json
+
   /login:
     post:
       tags:
