@@ -1,0 +1,409 @@
+{
+	"info": {
+		"name": "TechConnector",
+		"_postman_id": "36cd1fa7-5557-1f3e-cc0c-d8066ae58ca8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication & Registration",
+			"description": "",
+			"item": [
+				{
+					"name": "Sign Up User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"John Doe\",\n\t\"email\": \"johndoe@techconnector.com\",\n\t\"password\": \"P@ssw0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"johndoe@techconnector.com\",\n\t\"password\": \"P@ssw0rd\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Current User's Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{BASE_URL}}/profiles/me",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profiles",
+								"me"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create or Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"company\": \"Fake Company INC.\",\n\t\"location\": \"New York, US\",\n\t\"status\": \"Software Engeneer\",\n\t\"bio\": \"I started to works as Software Engeneer around 8 years ago. I have been working with Javascript, Python, PHP, ReactJS, VueJS etc...\",\n\t\"github_username\": \"https://github.com/johndoe\",\n\t\"website\": \"https://johndoe.com\",\n\t\"youtube\": \"https://youtube.com/johndoe\",\n\t\"twitter\": \"https://twitter.com/johndoe\",\n\t\"facebook\": \"https://facebook.com/johndoe\",\n\t\"linkedin\": \"https://linkedin.com/johndoe\",\n\t\"instagram\": \"https://instagram.com/johndoe\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profiles",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profiles"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "List all Profiles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{BASE_URL}}/profiles",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profiles"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{BASE_URL}}/profiles/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profiles",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{BASE_URL}}/profiles",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profiles"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile's Education",
+			"description": "",
+			"item": [
+				{
+					"name": "Add education to profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"school\": \"Faker College\",\n\t\"degree\": \"Bachelor\",\n\t\"field_of_study\": \"Computer Science\",\n\t\"description\": \"Recognize the broader issues in computer technology-related problems; understand the technological, business, legal and societal constraints affecting this technology;\",\n\t\"from\": \"\",\n\t\"current\": \"true\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profiles/education",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profiles",
+								"education"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete education from profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{BASE_URL}}/profiles/experience",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profiles",
+								"experience"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile's Experience",
+			"description": "",
+			"item": [
+				{
+					"name": "Add experience to profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Senior Software Engeneer\",\n\t\"company\": \"Faker Company Brazil CO.\",\n\t\"location\": \"Brazil, RS\",\n\t\"description\": \"Develop and mantain sofwares according to clients demands\",\n\t\"from\": \"2016-10-20\",\n\t\"current\": \"true\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profiles/experience",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profiles",
+								"experience"
+							]
+						},
+						"description": "Attach experience to the current logged in user's profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete experience from profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{BASE_URL}}/profiles/experience",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profiles",
+								"experience"
+							]
+						},
+						"description": "Delete experience from the current logged in user's profile"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
