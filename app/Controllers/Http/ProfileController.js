@@ -91,6 +91,7 @@ class ProfileController {
     await profile.load("user");
     await profile.load("experiences");
     await profile.load("educations");
+    await profile.load("skills");
 
     return profile;
   }
@@ -112,6 +113,7 @@ class ProfileController {
     await profile.load("user");
     await profile.load("experiences");
     await profile.load("educations");
+    await profile.load("skills");
 
     return profile;
   }
