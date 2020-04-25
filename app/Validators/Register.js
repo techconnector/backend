@@ -7,7 +7,7 @@ class Register extends BaseValidator {
     return {
       name: "required",
       email: "required|email|unique:users,email",
-      password: "required"
+      password: "required",
     };
   }
 }

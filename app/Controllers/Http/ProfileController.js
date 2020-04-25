@@ -41,6 +41,7 @@ class ProfileController {
    */
   async store({ auth, request }) {
     const data = request.only([
+      "skills",
       "company",
       "location",
       "status",
@@ -51,7 +52,7 @@ class ProfileController {
       "twitter",
       "facebook",
       "linkedin",
-      "instagram"
+      "instagram",
     ]);
 
     const user = await auth.getUser();
@@ -63,11 +64,12 @@ class ProfileController {
     } else {
       profile = await Profile.create({
         ...data,
-        user_id: user.id
+        user_id: user.id,
       });
     }
 
     await profile.load("user");
+    await profile.load("skills");
 
     return profile;
   }

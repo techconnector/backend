@@ -38,7 +38,7 @@ test("it should be able to update a profile", async ({ assert, client }) => {
   const profile = await Factory.model("App/Models/Profile").create({
     company: "Some Random Company",
     location: "Some Random Location",
-    user_id: user.id
+    user_id: user.id,
   });
 
   const response = await client
@@ -47,7 +47,9 @@ test("it should be able to update a profile", async ({ assert, client }) => {
     .loginVia(user)
     .send({
       company: "New Company",
-      location: "New Location"
+      location: "New Location",
+      status: "Software Developer",
+      skills: "HTML,CSS,Javascript,Python",
     })
     .end();
 
@@ -59,7 +61,7 @@ test("it should be able to update a profile", async ({ assert, client }) => {
 });
 
 test("it should not be able to create/edit a profile without user id", async ({
-  client
+  client,
 }) => {
   const profile = await Factory.model("App/Models/Profile").make();
 
@@ -72,13 +74,47 @@ test("it should not be able to create/edit a profile without user id", async ({
   response.assertStatus(401);
 });
 
+test("it should not be able to create/edit a profile without the required fields", async ({
+  client,
+}) => {
+  const user = await Factory.model("App/Models/User").create();
+  const response = await client
+    .post("/api/v1/profiles")
+    .header("accept", "application/json")
+    .loginVia(user)
+    .end();
+
+  response.assertStatus(400);
+});
+
+test("it should be able to create skills when creating a profile", async ({
+  assert,
+  client,
+}) => {
+  const user = await Factory.model("App/Models/User").create();
+  const profile = await Factory.model("App/Models/Profile").make();
+  profile.skills = "HTML,CSS,Javascript,Python";
+  const response = await client
+    .post("/api/v1/profiles")
+    .header("accept", "application/json")
+    .loginVia(user)
+    .send(profile.toJSON())
+    .end();
+
+  response.assertStatus(200);
+  assert.equal(response.body.company, profile.company);
+  assert.equal(response.body.location, profile.location);
+  assert.equal(response.body.user.id, user.id);
+  assert.equal(response.body.skills.length, 4);
+});
+
 test("it should be able to get current user's profile", async ({
   assert,
-  client
+  client,
 }) => {
   const user = await Factory.model("App/Models/User").create();
   const profile = await Factory.model("App/Models/Profile").create({
-    user_id: user.id
+    user_id: user.id,
   });
   const response = await client
     .get("/api/v1/profiles/me")
@@ -93,14 +129,14 @@ test("it should be able to get current user's profile", async ({
 
 test("it should be able to get a single profile by its ID", async ({
   assert,
-  client
+  client,
 }) => {
   const user1 = await Factory.model("App/Models/User").create();
   await Factory.model("App/Models/Profile").create({ user_id: user1.id });
 
   const user2 = await Factory.model("App/Models/User").create();
   const profile2 = await Factory.model("App/Models/Profile").create({
-    user_id: user2.id
+    user_id: user2.id,
   });
 
   const response = await client
@@ -115,20 +151,20 @@ test("it should be able to get a single profile by its ID", async ({
 
 test("it should be able to get a list of profiles's with pagination", async ({
   assert,
-  client
+  client,
 }) => {
   const user1 = await Factory.model("App/Models/User").create();
   const user2 = await Factory.model("App/Models/User").create();
   const user3 = await Factory.model("App/Models/User").create();
 
   await Factory.model("App/Models/Profile").create({
-    user_id: user1.id
+    user_id: user1.id,
   });
   await Factory.model("App/Models/Profile").create({
-    user_id: user2.id
+    user_id: user2.id,
   });
   await Factory.model("App/Models/Profile").create({
-    user_id: user3.id
+    user_id: user3.id,
   });
 
   const response = await client
@@ -143,11 +179,11 @@ test("it should be able to get a list of profiles's with pagination", async ({
 
 test("it should be able to delete current logged in user's profile and user itself", async ({
   assert,
-  client
+  client,
 }) => {
   const user = await Factory.model("App/Models/User").create();
   const profile = await Factory.model("App/Models/Profile").create({
-    user_id: user.id
+    user_id: user.id,
   });
 
   const response = await client
@@ -166,11 +202,11 @@ test("it should be able to delete current logged in user's profile and user itse
 
 test("it should not be able to delete current logged in user's profile and user itself without being logged in", async ({
   assert,
-  client
+  client,
 }) => {
   const user = await Factory.model("App/Models/User").create();
   const profile = await Factory.model("App/Models/Profile").create({
-    user_id: user.id
+    user_id: user.id,
   });
 
   const response = await client

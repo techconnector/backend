@@ -10,7 +10,7 @@ Factory.blueprint("App/Models/User", (faker, i, data = {}) => {
     email: faker.email(),
     password: faker.password(),
     avatar: faker.avatar(),
-    ...data
+    ...data,
   };
 });
 
@@ -18,6 +18,7 @@ Factory.blueprint("App/Models/Profile", (faker, i, data = {}) => {
   const username = faker.name().replace(" ", "");
 
   return {
+    skills: "HTML,CSS,Javascript,Python",
     company: faker.company(),
     location: faker.address(),
     status: faker.profession(),
@@ -29,14 +30,12 @@ Factory.blueprint("App/Models/Profile", (faker, i, data = {}) => {
     facebook: `https://facebook.com/${username}`,
     linkedin: `https://linkedin.com/${username}`,
     instagram: `https://instagram.com/${username}`,
-    ...data
+    ...data,
   };
 });
 
 Factory.blueprint("App/Models/Experience", (faker, i, data = {}) => {
-  const from = moment()
-    .subtract(1, "year")
-    .format("YYYY-MM-DD HH:mm:00");
+  const from = moment().subtract(1, "year").format("YYYY-MM-DD HH:mm:00");
   const to = moment().format("YYYY-MM-DD HH:mm:00");
 
   return {
@@ -47,14 +46,12 @@ Factory.blueprint("App/Models/Experience", (faker, i, data = {}) => {
     from,
     to,
     current: false,
-    ...data
+    ...data,
   };
 });
 
 Factory.blueprint("App/Models/Education", (faker, i, data = {}) => {
-  const from = moment()
-    .subtract(4, "year")
-    .format("YYYY-MM-DD HH:mm:00");
+  const from = moment().subtract(4, "year").format("YYYY-MM-DD HH:mm:00");
   const to = moment().format("YYYY-MM-DD HH:mm:00");
   const schools = ["ULBRA", "Unisinos", "Feevale", "PUC", "Harvard", "CalTech"];
   const degrees = ["High School", "Bachelor", "Masters", "PHD"];
@@ -68,6 +65,6 @@ Factory.blueprint("App/Models/Education", (faker, i, data = {}) => {
     from,
     to,
     current: false,
-    ...data
+    ...data,
   };
 });

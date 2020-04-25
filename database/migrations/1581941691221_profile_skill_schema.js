@@ -5,7 +5,8 @@ const Schema = use("Schema");
 
 class ProfileSkillSchema extends Schema {
   up() {
-    this.create("profile_skills", table => {
+    this.create("profile_skill", (table) => {
+      table.increments();
       table
         .integer("profile_id")
         .unsigned()
@@ -24,7 +25,7 @@ class ProfileSkillSchema extends Schema {
   }
 
   down() {
-    this.drop("profile_skills");
+    this.drop("profile_skill");
   }
 }
 

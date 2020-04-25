@@ -19,7 +19,7 @@ Route.group(() => {
 Route.group(() => {
   // Profile
   Route.get("/profiles/me", "ProfileController.me");
-  Route.post("/profiles", "ProfileController.store");
+  Route.post("/profiles", "ProfileController.store").validator(["Profile"]);
   Route.delete("/profiles", "ProfileController.destroy");
 
   // Profile's Education
