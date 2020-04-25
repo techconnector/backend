@@ -7,6 +7,7 @@ class Profile extends BaseValidator {
     return {
       status: "required",
       skills: "required",
+      github_username: "max:30",
     };
   }
 }
