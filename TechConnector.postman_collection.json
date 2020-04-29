@@ -1,14 +1,12 @@
 {
 	"info": {
+		"_postman_id": "06f4a95a-def1-4071-9c8b-9956acfc2518",
 		"name": "TechConnector",
-		"_postman_id": "36cd1fa7-5557-1f3e-cc0c-d8066ae58ca8",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Authentication & Registration",
-			"description": "",
 			"item": [
 				{
 					"name": "Sign Up User",
@@ -36,8 +34,7 @@
 							"path": [
 								"register"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -67,16 +64,49 @@
 							"path": [
 								"login"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU4NzA4Mzc4NX0.oonW1srJXs7zsLVoEYWNOjrv7ACuvlrFPLqgoM_GQTQ",
+									"type": "string"
+								}
+							]
 						},
-						"description": ""
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/auth",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth"
+							]
+						},
+						"description": "Get the current logged in user by the JWT Bearer token provided in the Authorization header"
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Profile",
-			"description": "",
 			"item": [
 				{
 					"name": "Get Current User's Profile",
@@ -98,7 +128,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
 						"url": {
 							"raw": "{{BASE_URL}}/profiles/me",
 							"host": [
@@ -108,8 +137,7 @@
 								"profiles",
 								"me"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -139,7 +167,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"company\": \"Fake Company INC.\",\n\t\"location\": \"New York, US\",\n\t\"status\": \"Software Engeneer\",\n\t\"bio\": \"I started to works as Software Engeneer around 8 years ago. I have been working with Javascript, Python, PHP, ReactJS, VueJS etc...\",\n\t\"github_username\": \"https://github.com/johndoe\",\n\t\"website\": \"https://johndoe.com\",\n\t\"youtube\": \"https://youtube.com/johndoe\",\n\t\"twitter\": \"https://twitter.com/johndoe\",\n\t\"facebook\": \"https://facebook.com/johndoe\",\n\t\"linkedin\": \"https://linkedin.com/johndoe\",\n\t\"instagram\": \"https://instagram.com/johndoe\"\n}"
+							"raw": "{\n\t\"status\": \"Software Engeneer\",\n\t\"skills\": \"HTML, CSS, Javascript, Python\",\n\t\"company\": \"Fake Company INC.\",\n\t\"location\": \"New York, US\",\n\t\"bio\": \"I started to works as Software Engeneer around 8 years ago. I have been working with Javascript, Python, PHP, ReactJS, VueJS etc...\",\n\t\"github_username\": \"https://github.com/johndoe\",\n\t\"website\": \"https://johndoe.com\",\n\t\"youtube\": \"https://youtube.com/johndoe\",\n\t\"twitter\": \"https://twitter.com/johndoe\",\n\t\"facebook\": \"https://facebook.com/johndoe\",\n\t\"linkedin\": \"https://linkedin.com/johndoe\",\n\t\"instagram\": \"https://instagram.com/johndoe\"\n}"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/profiles",
@@ -149,8 +177,7 @@
 							"path": [
 								"profiles"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -164,7 +191,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
 						"url": {
 							"raw": "{{BASE_URL}}/profiles",
 							"host": [
@@ -173,8 +199,7 @@
 							"path": [
 								"profiles"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -188,7 +213,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
 						"url": {
 							"raw": "{{BASE_URL}}/profiles/1",
 							"host": [
@@ -198,8 +222,7 @@
 								"profiles",
 								"1"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -223,7 +246,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
 						"url": {
 							"raw": "{{BASE_URL}}/profiles",
 							"host": [
@@ -232,16 +254,15 @@
 							"path": [
 								"profiles"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Profile's Education",
-			"description": "",
 			"item": [
 				{
 					"name": "Add education to profile",
@@ -280,8 +301,7 @@
 								"profiles",
 								"education"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -305,7 +325,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
 						"url": {
 							"raw": "{{BASE_URL}}/profiles/experience",
 							"host": [
@@ -315,16 +334,15 @@
 								"profiles",
 								"experience"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Profile's Experience",
-			"description": "",
 			"item": [
 				{
 					"name": "Add experience to profile",
@@ -388,7 +406,6 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
 						"url": {
 							"raw": "{{BASE_URL}}/profiles/experience",
 							"host": [
@@ -403,7 +420,9 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
